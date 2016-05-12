@@ -20,6 +20,7 @@ require 'indix_api_client'
 IndixApiClient.new("app_id", "app_key")
 ```
 
+##BCS Lookup
 ##To Get Stores 
 ```ruby
 ixc = IndixApiClient.new("app_id", "app_key")
@@ -28,3 +29,13 @@ query.q="nike"
 ixc.get_stores(query)
 ```
 
+##Product Search
+##To get summary products
+```ruby
+ixc = IndixApiClient.new("app_id", "app_key")
+query = SearchParams.new
+query.q="nike"
+query.countryCode="US"
+query.storeId=[24]
+ixc.get_summary_products(query)
+```
