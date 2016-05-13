@@ -26,3 +26,7 @@ class SearchParams < BulkProductSearchParams
 	attr_accessor :q, :url, :upc, :mpn, :sku
 	attr_accessor :sortBy, :facetBy, :pageNumber, :pageSize
 end
+
+class PriceHistoryParams < ParamsBase
+	attr_accessor :countryCode, :storeId
+end
