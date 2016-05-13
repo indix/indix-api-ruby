@@ -69,12 +69,12 @@ ixc.post_bulk_summary_products(query)
 To post bulk product summary search
 ```ruby
 ixc = IndixApiClient.new("app_id", "app_key")
-ixc.post_bulk_job_status(job_id)
+ixc.get_bulk_job_status(job_id)
 ```
 
 ##Bulk Job Output
 To post bulk product summary search
 ```ruby
 ixc = IndixApiClient.new("app_id", "app_key")
-ixc.post_bulk_job_output(job_id)
+ixc.get_bulk_job_output(job_id)
 ```
