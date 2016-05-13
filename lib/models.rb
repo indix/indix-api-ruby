@@ -1,4 +1,8 @@
 class ParamsBase
+	def initialize params
+    params.each { |k, v| send "#{k}=", v }
+  end
+
 	def to_hash
 		hash = {}
 		self.instance_variables.each do |var| 
