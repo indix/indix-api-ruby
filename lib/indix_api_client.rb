@@ -57,7 +57,7 @@ class IndixApiClient < ParamsBase
 		get_product_detail(product_id, countryCode, 'summary')
 	end
 
-	def get_offers_standard_product_detail(countryCode, product_id)
+	def get_offers_standard_product_detail(product_id, countryCode)
 		get_product_detail(product_id, countryCode, 'offersStandard')
 	end
 
@@ -139,8 +139,8 @@ class IndixApiClient < ParamsBase
 	def post_advanced_search_bulk_job(query)
 		payload = query.to_hash
 		payload.merge!(get_api_params)
-		request_params = {:multipart => true}		
-		self.http_client.request("post", "/v2/universal/bulk/ase", request_params, payload)	
+		extra_options = {:multipart => true}		
+		self.http_client.request("post", "/v2/universal/bulk/ase", {}, payload, extra_options)	
 	end
 
 	def get_advanced_search_bulk_job_status(job_id)
@@ -155,12 +155,12 @@ class IndixApiClient < ParamsBase
 	end
 
 	def get_api_params
-		{:app_id =>  self.app_id, :app_key => self.app_key}
+		{"app_id" =>  self.app_id, "app_key" => self.app_key}
 	end
 
 	def get_suggestions(country_code, q)
 		params = get_api_params
-		params.merge!({:countryCode => country_code, :q => q})
+		params.merge!({"countryCode" => country_code, "q" => q})
 		self.http_client.request("get", "/v2/bulk/ase/#{job_id}", params)
 	end
 
@@ -178,8 +178,8 @@ class IndixApiClient < ParamsBase
 		self.http_client.request("get", "/v2/#{type}/products", params)		
 	end	
 
-	def get_product_detail(country_code, product_id, type = 'summary')
-		params = {:countryCode => country_code}
+	def get_product_detail(product_id, country_code, type = 'summary')
+		params = {"countryCode" => country_code}
 		params.merge!(get_api_params)
 		self.http_client.request("get", "/v2/#{type}/products/#{product_id}", params)		
 	end	
@@ -193,8 +193,8 @@ class IndixApiClient < ParamsBase
 	def post_bulk_lookup_job(query, type = 'summary')
 		payload = query.to_hash
 		payload.merge!(get_api_params)
-		request_params = {:multipart => true}		
-		self.http_client.request("post", "/v2/#{type}/bulk/lookup", request_params, payload)				
+		extra_options = {:multipart => true}		
+		self.http_client.request("post", "/v2/#{type}/bulk/lookup", {}, payload, extra_options)				
 	end
 
 	def get_http_client

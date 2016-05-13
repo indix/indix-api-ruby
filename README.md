@@ -15,7 +15,7 @@ require 'indix_api_client'
 
 ##Initialize Api Client
 ```ruby
-IndixApiClient.new("app_id", "app_key")
+ixc = IndixApiClient.new("app_id", "app_key")
 ```
 
 ##BCS Lookup
@@ -66,14 +66,12 @@ ixc.post_bulk_summary_products(query)
 ```
 
 ##Bulk Job Status
-To post bulk product summary search
 ```ruby
 ixc = IndixApiClient.new("app_id", "app_key")
 ixc.get_bulk_job_status(job_id)
 ```
 
 ##Bulk Job Output
-To post bulk product summary search
 ```ruby
 ixc = IndixApiClient.new("app_id", "app_key")
 ixc.get_bulk_job_output(job_id)

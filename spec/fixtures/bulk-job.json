@@ -1,0 +1,7 @@
+{
+  "message": "ok",
+  "result": {
+    "jobId": "1234",
+    "status": "SUBMITTED"
+  }
+}

@@ -12,4 +12,5 @@ Gem::Specification.new do |s|
 	s.add_runtime_dependency 'rest-client',  '~>1.8' 
 	s.add_runtime_dependency 'activesupport', '~>4.0'
 	s.add_runtime_dependency 'hashie', '~>3.0'
+  s.add_development_dependency 'rspec', '~>3.4.0'
 end

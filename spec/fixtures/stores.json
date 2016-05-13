@@ -1,0 +1,12 @@
+{
+  "message":"ok",
+  "result":{
+    "stores":[
+      {
+				"id":270,
+				"name":"Amazon.com Marketplace",
+				"countryCode":"US"
+      }
+    ]
+  }
+}

@@ -25,7 +25,7 @@ class HttpClient
       when 'get'
         response = self.get(path)
       when 'post'
-        payload = build_query(payload) if request_params[:multipart] != true
+        payload = build_query(payload) if extra_options[:multipart] != true
         response = self.post(path, payload)
       end
     rescue RestClient::BadRequest => e
@@ -45,7 +45,7 @@ class HttpClient
       end
     end
     response
-  end
+  end 
 
   def get(path)
     RestClient::Request.execute(:method => :get, :url => path, :headers => @headers, :verify_ssl => false)
@@ -68,10 +68,6 @@ class HttpClient
     URI.escape(str, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))
   end
 
-  def encode_payload(options)
-    return ::ActiveSupport::JSON.encode(options)
-  end
-  
   def build_query(options)
     return nil if options.nil? or options.empty?
     options = options.collect do |name, value|
