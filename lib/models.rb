@@ -1,5 +1,5 @@
 class ParamsBase
-	def initialize params
+	def initialize params={}
     params.each { |k, v| send "#{k}=", v }
   end
 
